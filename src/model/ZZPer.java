@@ -17,6 +17,7 @@ public class ZZPer extends Persoon{
     public void huurIn(int aantalUren){
         setUrenGewerkt(aantalUren);
     }
+
     @Override
     public String toString(){
         return String.format("%s en is een ZZPer met een uurtarief van %.2f.", super.toString(), getUurtarief());
