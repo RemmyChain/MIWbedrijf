@@ -26,6 +26,10 @@ public class Afdeling {
     public String getAfdelingsNaam() {
         return afdelingsNaam;
     }
+    @Override
+    public String toString(){
+        return "afdeling " + getAfdelingsNaam() + " te " + getAfdelingsPlaats();
+    }
 
     public void setAfdelingsPlaats(String afdelingsPlaats) {
         this.afdelingsPlaats = afdelingsPlaats;

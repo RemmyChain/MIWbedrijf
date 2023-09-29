@@ -2,6 +2,8 @@ package controller;
 
 import model.Afdeling;
 import model.Persoon;
+import model.Werknemer;
+import model.ZZPer;
 
 /**
  * Author: Remco Ketting
@@ -17,23 +19,21 @@ public class BedrijfLauncher {
     afdelingen[2] = new Afdeling("Management", "Almere");
     afdelingen[3] = new Afdeling("Documentatie", "Gouda");
 
-    Persoon baas = new Persoon("Mark", "Den Haag", 10000, afdelingen[2]);
-    Persoon medewerker = new Persoon("Caroline", "Delft", 4000, afdelingen[1]);
-    Persoon assistent = new Persoon ("Klaas");
+    Werknemer baas = new Werknemer("Mark", "Den Haag", afdelingen[2], 10000.00 );
+    Werknemer medewerker = new Werknemer("Caroline", "Delft", afdelingen[1], 4000.00 );
+    ZZPer assistent = new ZZPer("Klaas", "Diemen", afdelingen[3], 50.00);
+    assistent.huurIn(160);
 
-    System.out.printf("In dit fantastische bedrijf werken %d personen!\n", Persoon.aantalPersonen);
+    System.out.printf("\nAantal mensen in bedrijf: %d\n", Persoon.aantalPersonen);
+    System.out.println(baas);
+    System.out.println(medewerker);
+    System.out.println(assistent);
 
-    geefSalarisData(baas);
-    geefSalarisData(medewerker);
-    geefSalarisData(assistent);
+    System.out.println();
 
+    System.out.printf("%s verdient %.2f per jaar.\n", baas.getNaam(), baas.berekenJaarInkomen());
+    System.out.printf("%s verdient %.2f per jaar.\n", medewerker.getNaam(), medewerker.berekenJaarInkomen());
+    System.out.printf("%s verdient %.2f per jaar.", assistent.getNaam(), assistent.berekenJaarInkomen());
 
-  }
-
-  private static void geefSalarisData(Persoon medewerker) {
-    System.out.printf("\n%s verdient %.2f, werkt op de afdeling %s in %s en heeft %s recht op een bonus!",
-            medewerker.getNaam(), medewerker.getMaandSalaris(), medewerker.getAfdeling().getAfdelingsNaam(),
-            medewerker.getAfdeling().getAfdelingsPlaats(),
-            medewerker.heeftRechtOpBonus() ? "wel" : "geen");
   }
 }
