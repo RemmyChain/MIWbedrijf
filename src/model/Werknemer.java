@@ -25,7 +25,11 @@ public class Werknemer extends Persoon{
         return getMaandSalaris() > GRENSWAARDE_BONUS;
     }
     public double berekenJaarInkomen(){
-        return MAANDEN_PER_JAAR * getMaandSalaris();
+        double jaarinkomen = MAANDEN_PER_JAAR * getMaandSalaris();
+        if (heeftRechtOpBonus()){
+            jaarinkomen += getMaandSalaris();
+        }
+        return jaarinkomen;
     }
 
     public String toString(){
