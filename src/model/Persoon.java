@@ -4,7 +4,7 @@ package model;
  * Author: Remco Ketting
  * Purpose of program:
  */
-public class Persoon {
+public abstract class Persoon {
     private static final String DEFAULT_WOONPLAATS = "onbekend";
     protected static final String DEFAULT_NAAM = "onbekend";
     protected static final int MAANDEN_PER_JAAR = 12;
@@ -27,10 +27,7 @@ public class Persoon {
     public Persoon() {
         this(DEFAULT_NAAM);
     }
-    public double berekenJaarInkomen() {
-
-        return 0;
-    }
+    public abstract double berekenJaarInkomen();
 
     @Override
     public String toString(){
