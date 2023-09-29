@@ -34,15 +34,7 @@ public class Persoon {
 
     @Override
     public String toString(){
-        return String.format("%s woont in %s en werkt op %s", getNaam(), getWoonplaats(), getAfdeling());
-    }
-
-    public int getPersoneelsNummer() {
-        return personeelsNummer;
-    }
-
-    public void setPersoneelsNummer(int personeelsNummer) {
-        this.personeelsNummer = personeelsNummer;
+        return String.format("%s woont in %s en werkt op %s", this.naam, this.woonplaats, this.afdeling);
     }
 
     public String getNaam() {
@@ -53,16 +45,8 @@ public class Persoon {
         this.naam = naam;
     }
 
-    public String getWoonplaats() {
-        return woonplaats;
-    }
-
     public void setWoonplaats(String woonplaats) {
         this.woonplaats = woonplaats;
-    }
-
-    public Afdeling getAfdeling() {
-        return afdeling;
     }
 
     public void setAfdeling(Afdeling afdeling) {
