@@ -6,7 +6,7 @@ package model;
  */
 public class Persoon {
     private static final String DEFAULT_WOONPLAATS = "onbekend";
-    private static final String DEFAULT_NAAM = "onbekend";
+    protected static final String DEFAULT_NAAM = "onbekend";
     protected static final int MAANDEN_PER_JAAR = 12;
     public static int aantalPersonen = 0;
     private int personeelsNummer;

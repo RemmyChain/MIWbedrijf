@@ -7,7 +7,6 @@ package model;
 public class Werknemer extends Persoon{
     private static final double GRENSWAARDE_BONUS = 4500.00;
     private static final double DEFAULT_SALARIS = 0.0;
-    private static final String DEFAULT_NAAM = "John/Jane Doe";
     private double maandSalaris;
 
     public Werknemer(String naam, String woonplaats, Afdeling afdeling, double salaris){
