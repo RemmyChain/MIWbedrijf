@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * Author: Remco Ketting
  * Purpose of program:
  */
-public abstract class Persoon {
+public abstract class Persoon implements Comparable<Persoon>{
     private static final String DEFAULT_WOONPLAATS = "onbekend";
     protected static final String DEFAULT_NAAM = "onbekend";
     protected static final int MAANDEN_PER_JAAR = 12;
@@ -33,6 +36,21 @@ public abstract class Persoon {
     public String toString(){
         return String.format("%s woont in %s en werkt op %s", this.naam, this.woonplaats, this.afdeling);
     }
+
+    public int compareTo(Persoon anderpersoon){
+        ArrayList<String> teSorteren = new ArrayList<>();
+        teSorteren.add(this.naam);
+        teSorteren.add(anderpersoon.naam);
+        Collections.sort(teSorteren);
+        if (teSorteren.get(0).equals(this.naam)){
+            return -1;
+        } else if (teSorteren.get(0).equals(anderpersoon.naam)){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
     public String getNaam() {
         return naam;

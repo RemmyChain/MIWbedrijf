@@ -1,11 +1,9 @@
 package controller;
 
-import model.Afdeling;
-import model.Persoon;
-import model.Werknemer;
-import model.ZZPer;
+import model.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Author: Remco Ketting
@@ -31,17 +29,27 @@ public class BedrijfLauncher {
     personen.add(new ZZPer("Jannie", "Utrecht", afdelingen[0], 60.00));
     personen.add(new ZZPer("Anne", "Zwolle", afdelingen[0], 40.00));
 
+    personen.add(new Vrijwilliger("Ambi", "Amsterdam", afdelingen[0]));
+    personen.add(new Vrijwilliger("Naledi", "Gaborone", afdelingen[1]));
+    personen.add(new Vrijwilliger("Ceren", "Istanboel", afdelingen[2]));
+    personen.add(new Vrijwilliger("Haining", "Shaoxing", afdelingen[3]));
+
     for (Persoon persoon : personen) {
       if (persoon instanceof ZZPer){
         ((ZZPer) persoon).huurIn(320);
+      } else if (persoon instanceof Vrijwilliger){
+        ((Vrijwilliger) persoon).huurIn(160);
       }
     }
-    for (Persoon persoon: personen){
+    Collections.sort(personen);
+
+    for (Persoon persoon : personen){
+      System.out.println(persoon);
       toonJaarinkomen(persoon);
     }
 
   }
   public static void toonJaarinkomen(Persoon persoon){
-    System.out.printf("\n%-9s verdient %-9.2f per jaar.", persoon.getNaam(), persoon.berekenJaarInkomen());
+    System.out.printf("%s verdient %.2f per jaar.\n", persoon.getNaam(), persoon.berekenJaarInkomen());
   }
 }

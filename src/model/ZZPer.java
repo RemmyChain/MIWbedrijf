@@ -4,7 +4,7 @@ package model;
  * Author: Remco Ketting
  * Purpose of program:
  */
-public class ZZPer extends Persoon{
+public class ZZPer extends Persoon implements Oproepbaar{
     private static final int DEFAULT_UREN_GEWERKT = 0;
     private double uurtarief;
     private int urenGewerkt;
@@ -14,6 +14,7 @@ public class ZZPer extends Persoon{
         this.uurtarief = uurtarief;
         this.urenGewerkt = DEFAULT_UREN_GEWERKT;
     }
+    @Override
     public void huurIn(int aantalUren){
         setUrenGewerkt(aantalUren);
     }
@@ -43,4 +44,6 @@ public class ZZPer extends Persoon{
     public void setUrenGewerkt(int urenGewerkt) {
         this.urenGewerkt = urenGewerkt;
     }
+
+
 }

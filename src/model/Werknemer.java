@@ -49,4 +49,6 @@ public class Werknemer extends Persoon{
             this.maandSalaris = maandSalaris;
         }
     }
+
+
 }
