@@ -9,15 +9,13 @@ public class Vrijwilliger extends Persoon implements Oproepbaar{
 
     public Vrijwilliger(String naam, String woonplaats, Afdeling afdeling){
         super(naam, woonplaats, afdeling);
+        this.urenGewerkt = 0;
     }
     @Override
     public void huurIn(int aantalUren){
-        setUrenGewerkt(aantalUren);
+        this.urenGewerkt = aantalUren;
     }
 
-    public void setUrenGewerkt(int urenGewerkt) {
-        this.urenGewerkt = urenGewerkt;
-    }
 
     @Override
     public double berekenJaarInkomen() {

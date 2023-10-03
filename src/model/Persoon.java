@@ -38,17 +38,7 @@ public abstract class Persoon implements Comparable<Persoon>{
     }
 
     public int compareTo(Persoon anderpersoon){
-        ArrayList<String> teSorteren = new ArrayList<>();
-        teSorteren.add(this.naam);
-        teSorteren.add(anderpersoon.naam);
-        Collections.sort(teSorteren);
-        if (teSorteren.get(0).equals(this.naam)){
-            return -1;
-        } else if (teSorteren.get(0).equals(anderpersoon.naam)){
-            return 1;
-        } else {
-            return 0;
-        }
+        return this.naam.compareTo(anderpersoon.naam);
     }
 
 

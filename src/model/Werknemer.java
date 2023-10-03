@@ -43,11 +43,10 @@ public class Werknemer extends Persoon{
 
     public void setMaandSalaris(double maandSalaris) {
         if (maandSalaris < 0){
-            System.out.println("Salaris mag niet negatief dus wordt op 1 gezet!");
-            this.maandSalaris = 0.0;
-        } else {
-            this.maandSalaris = maandSalaris;
-        }
+            throw new IllegalArgumentException("Salaris mag niet negatief zijn!");}
+
+        this.maandSalaris = maandSalaris;
+
     }
 
 
