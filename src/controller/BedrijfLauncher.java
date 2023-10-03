@@ -95,7 +95,7 @@ public class BedrijfLauncher {
     for (Afdeling afdeling : afdelingen) {
       System.out.printf("Afdeling: %s\n", afdeling.getAfdelingsNaam());
       for (Persoon persoon : personen) {
-        if (persoon.getAfdeling().getAfdelingsNaam().equals(afdeling.getAfdelingsNaam())){
+        if (persoon.getAfdeling().equals(afdeling)){
           System.out.println("--" + persoon);
         }
 
