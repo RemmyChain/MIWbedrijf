@@ -21,7 +21,7 @@ public class BedrijfLauncher {
 
     File leesbestand = new File("resources/Afdelingen.txt");
 
-    try (Scanner bestandsvreter = new Scanner(leesbestand);){
+    try (Scanner bestandsvreter = new Scanner(leesbestand)){
       while (bestandsvreter.hasNextLine()){
         afdelingen.add(new Afdeling(bestandsvreter.next(), bestandsvreter.next()));
       }
@@ -35,40 +35,40 @@ public class BedrijfLauncher {
 
     File personenbestand = new File("resources/Personen.csv");
 
-    try (Scanner bestandtsjapper = new Scanner(personenbestand);){
+    try (Scanner bestandtsjapper = new Scanner(personenbestand)){
       while (bestandtsjapper.hasNextLine()){
         bestandsregels.add(bestandtsjapper.nextLine());
 
       }
 
     } catch (FileNotFoundException nichtsda) {
-      System.out.println("Waah, geen bestand!");;
+      System.out.println("Waah, geen bestand!");
     }
 
-    for (int entry = 0; entry < bestandsregels.size(); entry++) {
-      String[] persoonrecept = bestandsregels.get(entry).split(",");
-      if (persoonrecept[0].equals("Werknemer")){
-        personen.add(new Werknemer(
-             persoonrecept[1],
-             persoonrecept[2],
-             afdelingen.get(Integer.parseInt(persoonrecept[3])),
-             Double.parseDouble(persoonrecept[4])
-        ));
-      } else if (persoonrecept[0].equals("Zzper")){
-        personen.add(new ZZPer(
-                persoonrecept[1],
-                persoonrecept[2],
-                afdelingen.get(Integer.parseInt(persoonrecept[3])),
-                Double.parseDouble(persoonrecept[4])
-        ));
-      } else {
-        personen.add(new Vrijwilliger(
-                persoonrecept[1],
-                persoonrecept[2],
-                afdelingen.get(Integer.parseInt(persoonrecept[3]))));
+      for (String bestandsregel : bestandsregels) {
+          String[] persoonrecept = bestandsregel.split(",");
+          if (persoonrecept[0].equals("Werknemer")) {
+              personen.add(new Werknemer(
+                      persoonrecept[1],
+                      persoonrecept[2],
+                      afdelingen.get(Integer.parseInt(persoonrecept[3])),
+                      Double.parseDouble(persoonrecept[4])
+              ));
+          } else if (persoonrecept[0].equals("Zzper")) {
+              personen.add(new ZZPer(
+                      persoonrecept[1],
+                      persoonrecept[2],
+                      afdelingen.get(Integer.parseInt(persoonrecept[3])),
+                      Double.parseDouble(persoonrecept[4])
+              ));
+          } else {
+              personen.add(new Vrijwilliger(
+                      persoonrecept[1],
+                      persoonrecept[2],
+                      afdelingen.get(Integer.parseInt(persoonrecept[3]))));
 
+          }
       }
-    }
     Collections.sort(personen);
 
     for (Persoon persoon : personen) {
