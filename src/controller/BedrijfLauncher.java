@@ -4,6 +4,7 @@ import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -68,8 +69,39 @@ public class BedrijfLauncher {
 
       }
     }
+    Collections.sort(personen);
 
-    System.out.println(personen);
+    for (Persoon persoon : personen) {
+      System.out.println(persoon);
+    }
+    System.out.println();
+
+    File personenPerAfdeling = new File("resources/PersonenPerAfdeling.txt");
+    try (PrintWriter schrijver = new PrintWriter(personenPerAfdeling)){
+      for (Afdeling afdeling : afdelingen) {
+        schrijver.printf("Afdeling: %s\n", afdeling.getAfdelingsNaam());
+        for (Persoon persoon : personen) {
+          if (persoon.getAfdeling().getAfdelingsNaam().equals(afdeling.getAfdelingsNaam())){
+            schrijver.println("--" + persoon);
+          }
+
+        }
+        schrijver.println();
+      }
+    } catch (FileNotFoundException e) {
+      System.out.println("Oi, kan niet schrijven!");
+    }
+
+    for (Afdeling afdeling : afdelingen) {
+      System.out.printf("Afdeling: %s\n", afdeling.getAfdelingsNaam());
+      for (Persoon persoon : personen) {
+        if (persoon.getAfdeling().getAfdelingsNaam().equals(afdeling.getAfdelingsNaam())){
+          System.out.println("--" + persoon);
+        }
+
+      }
+      System.out.println();
+    }
 
   }
   public static void toonJaarinkomen(Persoon persoon){

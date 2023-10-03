@@ -57,4 +57,8 @@ public abstract class Persoon implements Comparable<Persoon>{
     public void setAfdeling(Afdeling afdeling) {
         this.afdeling = afdeling;
     }
+
+    public Afdeling getAfdeling() {
+        return afdeling;
+    }
 }

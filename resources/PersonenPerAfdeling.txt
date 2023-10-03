@@ -1,0 +1,19 @@
+Afdeling: Uitvoering
+--Ambi woont in Amsterdam en werkt op afdeling Uitvoering te Hilversum en is een vrijwilliger.
+--Anne woont in Zwolle en werkt op afdeling Uitvoering te Hilversum en is een ZZPer met een uurtarief van 40,00.
+--Jannie woont in Utrecht en werkt op afdeling Uitvoering te Hilversum en is een ZZPer met een uurtarief van 60,00.
+--Ronald woont in Zaandam en werkt op afdeling Uitvoering te Hilversum en is een ZZPer met een uurtarief van 80,00.
+
+Afdeling: Support
+--Caroline woont in Delft en werkt op afdeling Support te Amsterdam en is een werknemer zonder recht op bonus.
+--Naledi woont in Gaborone en werkt op afdeling Support te Amsterdam en is een vrijwilliger.
+
+Afdeling: Management
+--Angelique woont in Rotterdam en werkt op afdeling Management te Almere en is een werknemer met recht op bonus.
+--Ceren woont in Istanboel en werkt op afdeling Management te Almere en is een vrijwilliger.
+--Mark woont in Den Haag en werkt op afdeling Management te Almere en is een werknemer met recht op bonus.
+
+Afdeling: Documentatie
+--Haining woont in Shaoxing en werkt op afdeling Documentatie te Gouda en is een vrijwilliger.
+--Klaas woont in Diemen en werkt op afdeling Documentatie te Gouda en is een ZZPer met een uurtarief van 50,00.
+
