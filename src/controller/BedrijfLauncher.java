@@ -23,7 +23,9 @@ public class BedrijfLauncher {
 //
 //    inpropper.slaAfdelingOp(new Afdeling("HR", "Hilversum"));
 
-    geefAfdelingenMetPlaats("Amsterdam");
+    AfdelingDAO interfees = new AfdelingDAO();
+
+    System.out.println(interfees.geefAfdelingenMetPlaats("Amsterdam"));
 
 //    ArrayList<Afdeling> afdelingen = new ArrayList<>();
 //

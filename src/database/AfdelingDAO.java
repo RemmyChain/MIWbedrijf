@@ -72,6 +72,38 @@ public class AfdelingDAO {
 
 
     }
+    public ArrayList<Afdeling> geefAfdelingenMetPlaats(String plaats){
+        ArrayList<Afdeling> gefilterd = new ArrayList<>();
+        DBaccess toegang = new DBaccess("Bedrijf", "userBedrijf", "userBedrijfPW");
+
+        toegang.openConnection();
+
+        Connection verbinding = toegang.getConnection();
+
+        ArrayList<Afdeling> returnlist = new ArrayList<>();
+
+        if (verbinding != null) {
+            System.out.println("De verbinding is gemaakt!");
+            String sql = String.format("SELECT * FROM afdeling WHERE afdelingsplaats = '%s'", plaats);
+            try {
+                PreparedStatement preparedStatement = verbinding.prepareStatement(sql);
+                ResultSet resultaat = preparedStatement.executeQuery();
+                while (resultaat.next()){
+                    String naam = resultaat.getString("afdelingsnaam");
+                    String plaatsafd = resultaat.getString("afdelingsplaats");
+                    gefilterd.add(new Afdeling(naam, plaatsafd));
+                }
+
+
+
+                verbinding.close();
+            } catch (SQLException sqlFout) {
+                System.out.println(sqlFout);
+            }
+        }
+
+        return gefilterd;
+    }
 
 
 }
