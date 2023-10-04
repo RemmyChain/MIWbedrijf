@@ -50,6 +50,10 @@ public abstract class Persoon implements Comparable<Persoon>{
         this.naam = naam;
     }
 
+    public String getWoonplaats() {
+        return woonplaats;
+    }
+
     public void setWoonplaats(String woonplaats) {
         this.woonplaats = woonplaats;
     }

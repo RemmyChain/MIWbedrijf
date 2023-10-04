@@ -9,42 +9,42 @@ import java.util.ArrayList;
  * Author: Remco Ketting
  * Purpose of program:
  */
-public class AfdelingDAO {
+public class AfdelingDAO extends AbstractDAO{
 
+
+    public AfdelingDAO(DBaccess dBaccess) {
+        super(dBaccess);
+    }
 
     public void slaAfdelingOp(Afdeling afdeling){
 
         String afdelingsnaam = afdeling.getAfdelingsNaam();
         String afdelingsplaats = afdeling.getAfdelingsPlaats();
 
-        DBaccess toegang = new DBaccess("Bedrijf", "userBedrijf", "userBedrijfPW");
+        dBaccess.openConnection();
 
-        toegang.openConnection();
-
-        Connection verbinding = toegang.getConnection();
+        Connection verbinding = dBaccess.getConnection();
 
         String sql2 = "INSERT INTO afdeling VALUES(?, ?);";
         try {
-            PreparedStatement preparedStatement =
-                    toegang.getConnection().prepareStatement(sql2);
+            setupPreparedStatement(sql2);
             preparedStatement.setString(1, afdelingsnaam);
             preparedStatement.setString(2, afdelingsplaats);
 
-            preparedStatement.executeUpdate();
+            executeManipulateStatement();
         } catch (SQLException sqlFout) {
             System.out.println(sqlFout);
         }
 
 
-        toegang.closeConnection();
+        dBaccess.closeConnection();
 
     }
     public ArrayList<Afdeling> leesAfdelingen(){
-        DBaccess toegang = new DBaccess("Bedrijf", "userBedrijf", "userBedrijfPW");
 
-        toegang.openConnection();
+        dBaccess.openConnection();
 
-        Connection verbinding = toegang.getConnection();
+        Connection verbinding = dBaccess.getConnection();
 
         ArrayList<Afdeling> returnlist = new ArrayList<>();
 
@@ -52,7 +52,7 @@ public class AfdelingDAO {
             System.out.println("De verbinding is gemaakt!");
             String sql = "SELECT * FROM afdeling;";
             try {
-                PreparedStatement preparedStatement = verbinding.prepareStatement(sql);
+               setupPreparedStatement(sql);
                 ResultSet resultaat = preparedStatement.executeQuery();
                 while (resultaat.next()){
                     String naam = resultaat.getString("afdelingsnaam");
@@ -74,11 +74,10 @@ public class AfdelingDAO {
     }
     public ArrayList<Afdeling> geefAfdelingenMetPlaats(String plaats){
         ArrayList<Afdeling> gefilterd = new ArrayList<>();
-        DBaccess toegang = new DBaccess("Bedrijf", "userBedrijf", "userBedrijfPW");
 
-        toegang.openConnection();
+        dBaccess.openConnection();
 
-        Connection verbinding = toegang.getConnection();
+        Connection verbinding = dBaccess.getConnection();
 
         ArrayList<Afdeling> returnlist = new ArrayList<>();
 
@@ -87,7 +86,7 @@ public class AfdelingDAO {
             String sql = "SELECT * FROM afdeling WHERE afdelingsplaats = ?";
 
             try {
-                PreparedStatement preparedStatement = verbinding.prepareStatement(sql);
+                setupPreparedStatement(sql);
                 preparedStatement.setString(1, plaats);
                 ResultSet resultaat = preparedStatement.executeQuery();
                 while (resultaat.next()){
