@@ -84,9 +84,11 @@ public class AfdelingDAO {
 
         if (verbinding != null) {
             System.out.println("De verbinding is gemaakt!");
-            String sql = String.format("SELECT * FROM afdeling WHERE afdelingsplaats = '%s'", plaats);
+            String sql = "SELECT * FROM afdeling WHERE afdelingsplaats = ?";
+
             try {
                 PreparedStatement preparedStatement = verbinding.prepareStatement(sql);
+                preparedStatement.setString(1, plaats);
                 ResultSet resultaat = preparedStatement.executeQuery();
                 while (resultaat.next()){
                     String naam = resultaat.getString("afdelingsnaam");
