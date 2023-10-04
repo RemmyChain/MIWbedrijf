@@ -25,7 +25,11 @@ public class BedrijfLauncher {
 
     AfdelingDAO interfees = new AfdelingDAO();
 
-    System.out.println(interfees.geefAfdelingenMetPlaats("Amsterdam"));
+    ArrayList<Afdeling> lijstje = interfees.geefAfdelingenMetPlaats("Amsterdam");
+
+    for (Afdeling afdeling : lijstje) {
+      System.out.println(afdeling);
+    }
 
 //    ArrayList<Afdeling> afdelingen = new ArrayList<>();
 //
